@@ -1,0 +1,806 @@
+@charset "utf-8";
+
+/* 课程列表 */
+
+.page-courselist{
+    min-height: 100%;
+    background: #FEF2E4FF url(../images/bg-course-top.png) no-repeat top center;
+    background-size: contain;
+    position: relative;
+    margin-bottom: 1.27rem;
+    padding-bottom: 1.27rem;
+}
+
+
+.page-courselist .top-content{
+    padding: 0.3rem;
+}
+
+.activity-rules{
+    font-size: 0.28rem;
+    color: #FFFFFF;
+    position: absolute;
+    top: 0.3rem;
+    right: 0.3rem;
+}
+.img-course{
+    position: absolute;
+    left: 0.3rem;
+    top: 1.43rem;
+    width: 2.87rem;
+    height: auto;
+}
+
+.content-courselist{
+    
+    padding-top: 3.2rem;
+}
+.content-courselist ul{
+    font-size: 0;
+    line-height: 0;
+}
+
+.course-item{
+    width: 2.75rem;
+    height: 3.16rem;
+    background: #FFFFFF;
+    border: 0.01rem solid #EFEFEF;
+    box-shadow: 0px 0px 0.36rem 0px rgba(212, 212, 212, 0.3);
+    border-radius: 0.1rem;
+    margin-bottom: 0.3rem;
+    display: inline-block;
+    margin-right: 0.3rem;
+    padding: 0.09rem 0.09rem 0.22rem;
+    position: relative;
+}
+
+.course-item:nth-child(2n){
+    margin-right: 0;
+}
+
+.course-item .img-box{
+    height: 1.63rem;
+    margin-bottom: 0.1rem;
+}
+
+.course-item p{
+    font-size: 0.24rem;
+    color: #323136;
+    line-height: 0.42rem;
+    margin-bottom: 0.1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.btn-expand{
+    height: 0.6rem;
+    background: linear-gradient(-90deg, #FF4B64, #FF4649);
+    background:-moz-linear-gradient(-90deg, #FF4B64, #FF4649);  
+    background:-webkit-linear-gradient(-90deg, #FF4B64, #FF4649);
+    background: -o-linear-gradient(-90deg, #FF4B64, #FF4649);
+    background: -ms-linear-gradient(-90deg, #FF4B64, #FF4649);
+    box-shadow: 0px 0.04rem 0.07rem 0px rgba(255, 48, 29, 0.24);
+    border-radius: 0.05rem;
+    color: #fff;
+    font-size: 0.24rem;
+    line-height: 0.6rem;
+    text-align: center;
+}
+.friend-list{position: fixed;left: 50%;transform: translateX(-50%);bottom: 0; max-width: 750px;min-width: 320px;width: 100%;}
+.none-list{
+    background: url(../images/bg-v-friend.png) no-repeat top center;
+    background-size: 100% 100%;
+    height: 1.27rem;
+}
+.none-list img{
+    width: 2.36rem;
+    height: auto;
+    
+}
+
+.none-list a{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.rules-content{
+}
+
+.rules-top-txt{
+    background: url(../images/bg-dialog-rules.png) no-repeat top center;
+    background-size: 100% 100%;
+    width: 5.56rem;
+    /* height: 8.19rem; */
+    padding: 0.73rem 0.57rem 0.57rem;
+    margin-bottom: 0.22rem;
+}
+
+.rules-top-txt .top-txt{
+    margin-bottom: 1.2rem;
+}
+
+.rules-top-txt .top-txt .t-ch{
+    font-size: 0.4rem;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.rules-top-txt .top-txt .t-en{
+    font-size: 0.16rem;
+    color: #fff;
+}
+
+.rules-top-txt .bottom-content{
+    font-size: 0.22rem;
+    color: #5A5A5A;
+    line-height: 0.38rem;
+    text-align: justify;
+}
+
+.close_btn{
+    width: 0.72rem;
+    height: 0.72rem;
+    margin: 0 auto;
+}
+/* 课程列表--end */
+
+/* 活动详情 */
+.page-activity-detail{
+    background: #ff3337  url(../images/bg-active-detail.png) no-repeat ;
+    background-size: 100% 100%;
+    min-height: 100%;
+    padding: 1.03rem 0.3rem 0.57rem;
+    position: relative;
+    overflow: hidden;;
+}
+.swiper-container {
+    height: 1.6rem;
+    margin-bottom: 0.1rem;
+}
+
+.page-activity-detail .expand-box{
+    position: relative;
+    width: 94%;
+    height: 6.82rem;
+    margin: 0 auto;
+}
+.page-activity-detail .expand-content{
+    width:100%;
+    height: 6.82rem;
+    background: url(../images/bg-active-cjj.png) no-repeat ;
+    background-size: 100% 100%;
+    z-index: 9;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0.72rem 0.4rem 0.93rem 0.4rem;
+}
+.page-activity-detail .img-jb-left{
+    width: 1.08rem;
+    height: 1.36rem;
+    position:absolute;
+    top: 0.68rem;
+    left: -0.75rem;
+}
+.page-activity-detail .img-jb-right{
+    width: 0.67rem;
+    height: 0.67rem;
+    position:absolute;
+    top: 4.04rem;
+    right: -0.55rem;
+}
+.page-activity-detail  .expand-list-box{
+    position: relative;
+    border-bottom: 0.02rem dashed #3D4667;
+}
+
+.page-activity-detail  .expand-list-box .expand-list{
+    border-right: 0.02rem  dashed #3D4667;
+    padding-right: 0.31rem;
+}
+.page-activity-detail  .expand-list-box .this-expand{
+    overflow: hidden;
+    text-align: center;
+}
+
+.page-activity-detail  .expand-list-box .this-expand::after{
+    content: '';
+    display: inline-block;
+    height: 0.1rem;
+    width: 1.45rem;
+    background: #3B526E;
+    border-radius: 0.05rem;
+    margin-top: 0.35rem;
+}
+
+.page-activity-detail  .expand-list-box .this-expand .expand-price{
+    font-size: 0.6rem;
+    color: #F2DD68;
+    line-height:0.55rem;
+}   
+
+@keyframes switch {
+    0%, 100%{
+      transform: scale(1);
+    }
+    50%{
+      transform: scale(1.2);
+    }
+  }
+
+.page-activity-detail  .expand-list-box .this-expand .expand-price.big{
+    animation: switch 0.7s linear;
+}
+
+.page-activity-detail  .expand-list-box .this-expand p{
+    font-size: 0.27rem;
+    color: #FFFFFF;
+    line-height: 0.38rem;
+    margin-bottom: 0.57rem;
+}
+
+.page-activity-detail  .expand-list p{
+    padding-left: 0.43rem;
+    font-size: 0.27rem;
+    color: #FFFFFF;
+    line-height: 0.38rem;
+    margin-bottom: 0.25rem;
+}
+
+.page-activity-detail  .expand-list ul li{
+    font-size: 0.22rem;
+    color: #FFFFFF;
+    line-height: 0.38rem;
+    margin-right: 0.1rem;
+    margin-bottom: 0.2rem;
+    padding-left: 0.31rem;
+}
+
+.page-activity-detail   .expand-list ul li span{
+    color: #ECE489;
+}
+
+.page-activity-detail  .activity-time{
+    padding: 0.08rem 0 0 0.23rem;
+    margin-bottom: 0.62rem;
+}
+
+.page-activity-detail  .activity-time .icon-medias{
+    width: 0.21rem;
+    height: 0.24rem;
+    display: inline-block;
+    margin-right: 0.13rem;
+    transform: translateY(-0.025rem);
+}
+
+.page-activity-detail  .activity-time span{
+    font-size: 0.22rem;
+    color: #FFFFFF;
+    line-height: 0.38rem;
+}
+
+.page-activity-detail  .bottom-btn-box .btn-ljyq{
+    width: 1.28rem;
+    height: 0.99rem;
+    line-height:0.9rem;
+    text-align: center;
+    background: url(../images/bg-btn-ljyq.png) no-repeat bottom;
+    background-size: contain;
+    margin-right: 0.1rem;
+    margin-top: 0.46rem;
+}
+
+.page-activity-detail  .bottom-btn-box .btn-ljyq:active{
+    background: url(../images/bg-btn-ljyq-down.png) no-repeat bottom;
+    background-size: contain;
+}
+.page-activity-detail  .bottom-btn-box .btn-ljyq a{
+    font-size: 0.27rem;
+    color: #FFFFFF;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.page-activity-detail  .bottom-btn-box .btn-pz {
+    width: 1.8rem;
+    height: 1.45rem;
+    margin-right: 0.19rem;
+    background: url(../images/btn-bz.png) no-repeat bottom;
+    background-size: contain;
+}
+.page-activity-detail  .bottom-btn-box .btn-pz:active {
+    background: url(../images/btn-bz-down.png) no-repeat bottom;
+    background-size: contain;
+}
+.page-activity-detail  .bottom-btn-box .btn-pz.disabled:active ,
+.page-activity-detail  .bottom-btn-box .btn-pz.disabled {
+    background: url(../images/btn-bz-disabled.png) no-repeat bottom;
+    background-size: contain;
+}
+
+.page-activity-detail  .bottom-btn-box .btn-pz img{
+    width: 100%;
+    height: 100%;
+}
+
+.page-activity-detail  .bottom-btn-box  .remain-times-box{
+    width: 1.28rem;
+    height: 0.99rem;
+    background: url(../images/bg-btn-sycs.png) no-repeat;
+    background-size: contain;
+    text-align: center;
+    font-size: 0.24rem;
+    font-weight: 500;
+    color: #893005;
+    padding-top: 0.08rem;
+    margin-top: 0.46rem;
+}
+
+.page-activity-detail  .bottom-btn-box  .remain-times-box .r-num{
+    font-size: 0.33rem;
+}
+
+.page-activity-detail  .remain-times-box .r-info{
+    transform: translateY(-0.1rem);
+}
+.page-activity-detail  .activity-info{
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.page-activity-detail  .activity-info h3{
+    font-size: 0.36rem;
+    font-weight: bold;
+    line-height: 0.36rem;
+    margin-bottom: 0.2rem;
+    margin-top: 0.38rem;
+}
+
+.page-activity-detail  .activity-info h3::before{
+    content: '';
+    display: inline-block;
+    width: 1.3rem;
+    height: 0.03rem;
+    background: url(../images/icon-line-10.png) no-repeat;
+    transform: rotate(180deg) translateY(0.1rem);
+    margin-right: 0.15rem;
+}
+
+.page-activity-detail  .activity-info h3::after{
+    content: '';
+    display: inline-block;
+    width: 1.3rem;
+    height: 0.03rem;
+    background: url(../images/icon-line-10.png) no-repeat;
+    margin-left: 0.15rem;
+    transform: translateY(-0.1rem);
+}
+
+.page-activity-detail  .activity-info p{
+    font-size: 0.24rem;
+    color: #FFFFFF;
+    line-height: 0.37rem;
+    
+}
+
+.page-activity-detail .btn-visity{
+    background: url(../images/bg-btn-bottom-ljyq.png) no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 1.11rem;
+    text-align: center;
+}
+.page-activity-detail .btn-visity a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 1.11rem;
+    font-size: 0.36rem;
+    font-weight: 500;
+    color: #8C2000;
+}
+
+.page-activity-detail .v-friend-list{
+    background: #FFFFFF;
+    border-radius: 0.1rem;
+    padding: 0.62rem 0.5rem 0.3rem;
+    margin-bottom: 0.33rem;
+}
+
+.page-activity-detail .v-friend-list .v-title{
+    font-weight: normal;
+    font-size: 0.36rem;
+    font-weight: 500;
+    color: #FF3337;
+    line-height: 0.36rem;
+    text-align: center;
+    margin-bottom: 0.3rem;
+}
+
+
+.page-activity-detail .v-friend-list .v-title::after,
+.page-activity-detail .v-friend-list .v-title::before{
+    content: '';
+    display: inline-block;
+    width: 0.32rem;
+    height: 0.2rem;
+    background: url(../images/icon-t-line.png) no-repeat;
+    background-size: contain;
+    transform: translateY(-0.02rem);
+}
+
+.page-activity-detail .v-friend-list .v-title::after{
+    margin-left: 0.2rem;
+}
+.page-activity-detail .v-friend-list .v-title::before{
+    margin-right: 0.2rem;
+}
+
+.page-activity-detail .v-friend-list  .v-header{
+    padding-left: 0.6rem;
+    padding-right: 0.35rem;
+    font-size: 0.24rem;
+    color: #BABCBD;
+    line-height: 0.36rem;
+    margin-bottom: 0.2rem;
+}
+
+.page-activity-detail .v-friend-list  .v-item .img-box{
+    width: 0.4rem;
+    height: 0.4rem  ;
+    background: #E4E4E4;
+    border-radius: 50%;
+    margin-right: 0.2rem;
+}
+.page-activity-detail .v-friend-list  .v-item .v-info{
+    overflow: hidden;
+    font-size: 0.24rem;
+    color: #292929;
+    line-height: 0.36rem;
+}
+    
+.page-activity-detail .v-friend-list  .v-item{
+    margin-bottom: 0.2rem;
+}
+
+.btn-more{
+    text-align: center;
+    font-size: 0.24rem;
+    color: #898989;
+    line-height: 0.36rem;
+}
+
+.btn-more img{
+    width: 0.16rem;
+    height: 0.08rem;
+}
+
+.btn-more img.all{
+    transform: rotate(180deg);
+}
+/* 活动详情 -- end */
+
+/* 生成海报 */
+.poster_page{
+    background: url(../images/bg-poster.png) no-repeat;
+    background-size: 100% 100%;
+    height: 100%;
+    padding: 1.33rem 0.4rem 1.11rem;
+    position: relative;
+}
+
+.poster_page .img-poster{
+    margin: 0 auto;
+    display: block;
+}
+
+.poster_page .bottom-btn-box {
+    position: absolute;
+    bottom: 1.11rem;
+    left: 0;
+    width: 100%;
+    padding: 0 0.59rem;
+}
+
+.poster_page .bottom-btn-box img{
+    width: 2.5rem;
+}
+
+.poster_page  .erweima-box {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0.64rem;
+    text-align: center;
+}
+
+.poster_page  .erweima-box div{
+    width: 2.42rem;
+    height: 2.42rem;
+    background: #fff;
+    border-radius: 0.2rem;
+    margin: 0 auto 0.2rem;
+}
+
+.poster_page  .erweima-box div img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.poster_page  .erweima-box p{
+    font-size: 0.26rem;
+    color: #FFFFFF;
+}
+    /* 登录弹窗 */
+    .login-box {
+        background: url(../images/bg-login.png) no-repeat;
+        background-size: 100% 100%;
+        width: 5.24rem;
+        padding: 2.7rem 0.3rem 0.4rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .login-box .login-title{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0.38rem;
+    }
+
+    .login-box .login-title .icon-line{
+        width: 0.32rem;
+        height: 0.2rem;
+        margin-right: 0.06rem;
+        margin-top: 0.06rem;
+    }
+    .login-box .login-title  .img-login{
+        width: 2.41rem;
+        height: 0.32rem;
+    }
+    .login-box  .form-box>div.v-phone{
+        margin-bottom: 0.24rem;
+    }
+
+    .login-box .form-box input{
+        height: 0.6rem;
+        border: 0.01rem solid #dedede;
+        border-radius: 0.04rem;
+        padding-left: 0.16rem;
+        outline: none;
+    }
+
+    .login-box .form-box input::-webkit-input-placeholder
+    .login-box .form-box input::-ms-input-placeholder,
+    .login-box .form-box input::-moz-placeholder,
+    .login-box .form-box input::placeholder{
+        color: #A7A7A7;
+        font-size: 0.24rem;
+    }
+
+    .login-box .v-phone input{
+        width: 100%;
+    }
+
+    .login-box .btn-code{
+        width: 1.6rem;
+        height:0.6rem;
+        font-size: 0.24rem;
+        font-family: Microsoft YaHei;
+        color: #FFFFFF;
+        border-radius: 0.04rem;
+        outline: none;border:none;
+        background: #FF4447;
+    }
+    .login-box .btn-code.btndisable{pointer-events: none; cursor: default; opacity: 0.6;}
+    .login-box  .form-box>div.v-code{
+        margin-bottom: 0.5rem;
+    }
+
+    .login-box .v-code input{
+        margin-right: 0.12rem;
+        width: 2.92rem;
+    }
+
+    .login-box .btn-log{
+        height: 0.66rem;
+        background: #FF4447;
+        border-radius: 0.04rem;
+        color: #fff;
+        text-align: center;
+        line-height: 0.66rem;
+    }
+
+    /* 登录弹窗 -- end */
+
+    /* 膨胀结果弹窗 */
+    .expand-result{
+        background: url(../images/bg-result.png) no-repeat;
+        background-size: 100% 100%;
+        width: 5.25rem;
+        padding: 2.9rem 1.3rem 0.46rem;
+    }
+
+    .expand-result img{
+        width: 1.59rem;
+        height: 0.32rem;
+        display: block;
+        margin:  0 auto 0.4rem;
+    }
+
+    .expand-result .close-result-box{
+        width: 2.62rem;
+        height: 0.66rem;
+        line-height: 0.66rem;
+        background: #FF4447;
+        border-radius: 0.04rem;
+        color: #fff;
+        font-size: 0.24rem;
+        text-align: center;;
+    }
+
+    /* 膨胀结果弹窗 -- end */
+
+/* app下载页面 */
+
+.download-page{
+    background: #FF4948 url(../images/bg-download-01.png);
+    height: 100%;
+    padding-top: 1rem;
+    position: relative;
+}
+
+.download-page .app-info{
+    background: url(../images/bg-download-03.png) no-repeat;
+    background-size: 100% 100%;
+    width: 5.3rem;
+    margin: 0 auto;
+    padding-top: 1.62rem;
+    text-align: center;
+    height: 100%;
+}
+
+.download-page .app-info img{
+    width: 1.19rem;
+    height: 1.18rem;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 0.35rem;
+}
+
+.download-page .app-info .app-title{
+    font-size: 0.39rem;
+    color: #FF4948;
+    line-height: 0.39rem
+}
+
+.download-page .app-info .app-txt{
+    font-size: 0.21rem;
+    color: #464646;
+    line-height: 0.39rem;
+}
+
+ .download-page .bottom-btn-box{
+    background: url(../images/bg-download-02.png) no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 1.86rem 0 0.96rem;
+}
+
+.download-page  .bottom-btn-box>div{
+    width: 5.05rem;
+    height: 1.25rem;
+    margin: 0 auto ;
+    text-align: center;
+    border-radius: 0.2rem;
+    font-size: 0.45rem;
+    line-height:1.13rem;
+}
+
+.download-page .bottom-btn-box>div img{
+    width: 0.6rem;
+    height: 0.72rem;
+    margin-right: 0.3rem;
+}
+
+.download-page .bottom-btn-box>div.btn-iphone{
+    background: #FFFFFF;
+    border: 0.01rem solid #FF4948;
+    color: #FF4948;
+    margin-bottom: 0.5rem;
+}
+.download-page .bottom-btn-box>div.btn-iphone a{color: #FF4948;}
+.download-page  .bottom-btn-box>div.btn-android a{color:#fff;}
+.download-page  .bottom-btn-box>div.btn-android{
+    color: #FFFFFF;
+    border: 0.01rem solid #FFFFFF;
+}
+
+.icon-buy{
+    width: 0.8rem;
+    height: 0.34rem;
+    line-height: 0.34rem;
+    color: #fff;
+    font-size: 0.16rem;
+    background: #000000;
+    opacity: 0.6;
+    border-radius: 0px 0px 0.15rem 0px;
+    position: absolute;
+    left: 0.09rem;
+    top: 0.09rem;
+    text-align: center;
+}
+
+
+/* 适配css */
+@media only screen and (min-width: 750px) {
+    .img-course{
+        width: 3.87rem;
+    }
+
+    .course-item{
+        width: 3.30rem;
+    }
+    .page-activity-detail .expand-list ul li{
+            padding-left: 0.51rem;
+    }
+    
+    .page-activity-detail  .expand-list p{
+        padding-left: 0.63rem;
+    }
+    .page-activity-detail .expand-list-box .expand-list {
+        padding-right: 0.61rem;
+    }
+    
+    .page-activity-detail .expand-content{
+        padding: 0.72rem 0.48rem 0.93rem 0.45rem;
+        width: 6.51rem;
+    }
+
+    .page-activity-detail  .bottom-btn-box .btn-ljyq{
+        width: 1.55rem;
+        height: 1.17rem;
+        margin-right: 0.19rem;
+    }
+    
+    .page-activity-detail  .bottom-btn-box .btn-pz {
+        width: 2.1rem;
+        height: 1.65rem;
+        margin-right: 0.19rem;
+    }
+
+    .page-activity-detail  .bottom-btn-box  .remain-times-box{
+        width: 1.28rem;
+        height: 0.99rem;
+        width: 1.55rem;
+        height: 1.17rem;
+        padding-top: 0.23rem;
+        margin-top: 0.46rem;
+    }
+    .page-activity-detail .remain-times-box .r-num {
+        margin-bottom: 0.1rem;
+    }
+    .page-activity-detail  .remain-times-box .r-info{
+        transform: translateY(0);
+    }
+    .poster_page .bottom-btn-box img{
+        width: 2.85rem;
+    }
+    .download-page{
+        min-height: 12rem;
+    }
+        
+    .rules-top-txt .top-txt .t-ch{
+        font-size: 0.4rem;
+        font-weight: bold;
+        color: #FFFFFF;
+        margin-bottom: 0.1rem;
+    }
+    .content-courselist{
+        padding-top: 4rem;
+    }
+}

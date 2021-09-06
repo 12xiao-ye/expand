@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入外部js -->
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="https://cdn.suoluomei.com/common/js2.0/vue/v2.5.16/vue.js"></script>
+    <script type="text/javascript" src="https://www.zbgedu.com/staticall/js/common/swiper.min.js"></script>
+  
+    <link rel="stylesheet" href="https://www.zbgedu.com/staticall/css/common/swiper.min.css">
+    <script src="./js/rem.js"></script>
+    <script src="js/common.js"></script>
+    <!-- 公用样式 -->
+    <link rel="stylesheet" href="./css/common.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="./css/web.css">        
+    <title>我的课程</title>
+</head>
+<!-- 活动详情页面 -->
+<body>
+    <div id="activity_detail" class="page-activity-detail" v-cloak>
+        <div class="activity-rules fr" @click="dialogRules = true">活动规则</div>
+        <!-- 抽奖机 -->
+            <div class="expand-box">
+                <img class="img-jb-left" :src="base_img_url+'images/bg-active-jb-2.png'" alt="">
+                <img class="img-jb-right" :src="base_img_url+'images/bg-active-jb-1.png'" alt="">
+                <div class="expand-content">
+                    <div class="clearfix expand-list-box"> 
+                        <div class="fl expand-list">
+                            <p>今日膨胀TOP榜</p>
+                            <ul class="swiper-list swiper-container">
+                                <div class="swiper-wrapper">
+                                    <li v-for="(item,index) in expandList" ::key="index" class="swiper-slide">
+                                        {{item.name}}膨胀了<span>￥{{item.price}}</span>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div>
+                        <div class=" this-expand">
+                            <p>本轮膨胀</p>
+                            <div class="expand-price" :class="{'big': isbig}">
+                                 ￥{{expandPrice}}
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="activity-time">
+                        <img :src="base_img_url + 'images/img-medis.png'" class="icon-medias" alt="">
+                        <span>活动时间：9月1日—9月30日</span>
+                    </div>
+                    <div class="bottom-btn-box clearfix">
+                        <div class="btn-ljyq fl">
+                            <a href="./postergenerate.html">立即邀请</a> 
+                        </div>
+                        <div class="btn-pz fl" @click="expandEvent" :class="{'disabled':btnPzDisabled}">
+                            <!-- <img v-if="" :src="base_img_url + 'images/btn-bz-down.png'" alt="">
+                            <img v-else-if="!btnPzDisabled" :src="base_img_url + 'images/btn-bz.png'" alt="">
+                            <img v-else :src="base_img_url + 'images/btn-bz-disabled.png'" alt=""> -->
+                        </div>
+                        <div class="remain-times-box fl">
+                            <p class="r-num">
+                                ×{{remainTimes}}
+                            </p>
+                            <p class="r-info">剩余次数</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 活动说明 -->
+            <div class="activity-info">
+                <h3>活动说明</h3>
+                <p>
+                    活动期间（9月1日-24日）购买ACCA、CMA、CICPA、CFA®、FRM®网络课程，课程满（抛去优惠券价格）1W元以上加赠888开学礼包或价值8880元【虚拟实习-海外四大安永训练生云实习计划】，二选一奖品。
+                </p>
+            </div>
+
+            <!-- 下方好友列表 -->
+            <div class="visited-friend-list-box">
+                <!-- 好友列表为空 -->
+                <div class="btn-visity" v-if="!visitedFriends.length">
+                    <a href="./postergenerate.html">立即邀请好友</a> 
+                </div>
+                <!-- 好友列表不为空 -->
+                <div class="v-friend-list" v-else>
+                    <h2 class="v-title">我的邀请</h2>
+                    <ul> 
+                        <li class="v-header clearfix">
+                            <span class="v-user fl">用户名</span>
+                            <span class="v-num fr">手机号</span>
+                        </li>
+                        <li class="v-item clearfix" v-for="(item,ind) in visitedFriends" :key = "ind" v-show="showAll ? ind <= visitedFriends.length : ind <= 4">
+                            <div class="img-box fl">
+                                <img src="" alt="">
+                            </div>
+                            <div class="v-info clearfix">
+                                <span class="f-name fl">平平无奇</span>
+                                <span class="f-number fr">158****8750</span>
+                            </div>
+                        </li>
+                        <div class="btn-more" @click="changeShow" v-if="visitedFriends.length > 5">
+                            更多记录
+                            <img :class="{'all': showAll}" :src="base_img_url + 'images/icon-more.png'" alt="">
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <!-- 规则弹窗 -->
+            <div class="dialog-bg dialog-rules-box" v-show="dialogRules">
+                <div class="rules-content pos_ab_center">
+                    <div class="rules-top-txt">
+                        <div class="top-txt">
+                            <p class="t-ch">活动规则</p>
+                            <p class="t-en">ACTIVITY RULES</p>
+                        </div>
+                        <div class="bottom-content">
+                            1.膨胀劵使用时间:2021.09.01-2021.09.30 <br>
+                            2.使用限制：5千元以上课程可使用7倍以内膨胀劵，10000元以上课程可使用10倍以内膨胀劵，20000元以上课程可使用20倍膨胀劵。<br>
+                            3.每日可膨胀3次，超过3次则无法在使用膨胀机会。<br>
+                            4.使用范围：仅限参与活动的课程进行使用。<br>
+                            5.膨胀劵不可叠加使用，每个课程只可使用一张膨胀劵。<br>
+                            6.膨胀劵仅限acca小助手用户使用、膨胀劵可与开学季折扣叠加使用。<br>
+                            7.最终解释权归中博教育所有。
+                        </div>
+                    </div>
+                    <div class="close_btn">
+                        <img :src="base_img_url +'images/btn-dialog-close.png'"   @click="dialogRules = false" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- 膨胀结果弹窗 -->
+            <div class="dialog-bg " v-if="dialogExpand">
+                <div class="expand-result pos_ab_center">
+                        <img v-if="expandSucess" :src="base_img_url + 'images/img-result-y.png'">
+                        <img v-else :src="base_img_url + 'images/img-result-n.png'">
+                        <div class="close-result-box" @click="resultPage">
+                            确定
+                        </div>
+                </div>
+            </div>
+    </div>
+</body>
+<script>
+    window.activity_detail = new Vue({
+        el:"#activity_detail",
+        data:{
+            dialogRules:false,
+            dialogExpand:false,
+            expandSucess:true,
+            base_img_url:"./",  //图片前缀
+            remainTimes: 1, //剩余次数
+            btnPzDisabled: false, //膨胀按钮是否置灰
+            expandPrice: 100, //膨胀金额
+            isbig: false,
+            showAll: false,
+            visitedFriends:[
+            ], // 好友助力列表
+            expandList:[
+                {
+                    name:"天**",
+                    price: 100
+                },
+                {
+                    name:"张**",
+                    price: 100
+                },
+                {
+                    name:"王**",
+                    price: 100
+                }
+            ]
+        },  
+        created: function () {
+        },
+        mounted: function () {
+            console.log(getCookie('phone','----'));
+        },
+        methods:{
+            changeShow:function(){
+                this.showAll = !this.showAll
+            },
+            expandEvent(){
+                console.log('膨胀事件')
+                $.ajax({
+                    url:'https://accahelper.zbgedu.com/api/jackPot/selfInfo',
+                    contentType: "application/json;charset=UTF-8",
+                    data:JSON.stringify({
+                        "appUserId": getCookie('accaUserId'),  
+						"userAccessToken": getCookie('userAccessToken')
+                    }),
+                    type:'post',
+					dataType:'json',
+                    success:function(res){
+                        console.log(res)
+                    }
+                })
+                this.dialogExpand = true
+            },
+            resultPage(){
+                this.dialogExpand = false
+                if(this.expandSucess){
+                    let that = this
+                    setTimeout(function(){
+                        that.isbig = true
+                    },300)
+                    setTimeout(function(){
+                        that.isbig = false
+                    },1400)
+                }
+            }
+        },
+    })
+    window.onload=function(){
+        swiper = new Swiper('.swiper-list', {
+            loop: true,
+            slidesPerView: 3,
+            spaceBetween: 0,
+            centeredSlides: true,
+            direction : 'vertical',
+            height: 40,
+
+            autoplay: {
+                delay: 2000,
+                stopOnLastSlide: false,
+                disableOnInteraction: true,
+                reverseDirection: false,
+            },
+            navigation: {
+            }
+        })
+    }
+</script>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入外部js -->
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="https://cdn.suoluomei.com/common/js2.0/vue/v2.5.16/vue.js"></script>
+    <script src="./js/rem.js"></script>
+    <script src="js/common.js"></script>
+    <!-- 公用样式 -->
+    <link rel="stylesheet" href="./css/common.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="./css/web.css">   
+    
+    <title>我的课程</title>
+</head>
+<!-- 海报生成页面 -->
+<body>
+    <div id="poster_generate" class="poster_page" v-cloak>
+        <div class="activity-rules fr" @click="dialogRules = true">活动规则</div>
+        <img class="img-poster" :src="base_img_url + 'images/img-poster.png'" alt="">
+        <div class="bottom-btn-box clearfix">
+            <img class="btn-share fl" @click="addShare" :src="base_img_url + 'images/btn-share.png'" alt="">
+            <img class="btn-poster fr"  :src="base_img_url + 'images/btn-poster.png'" alt="">
+        </div>
+        <!-- 规则弹窗 -->
+        <div class="dialog-bg dialog-rules-box" v-show="dialogRules">
+            <div class="rules-content pos_ab_center">
+                <div class="rules-top-txt">
+                    <div class="top-txt">
+                        <p class="t-ch">活动规则</p>
+                        <p class="t-en">ACTIVITY RULES</p>
+                    </div>
+                    <div class="bottom-content">
+                        1.膨胀劵使用时间:2021.09.01-2021.09.30 <br>
+                        2.使用限制：5千元以上课程可使用7倍以内膨胀劵，10000元以上课程可使用10倍以内膨胀劵，20000元以上课程可使用20倍膨胀劵。<br>
+                        3.每日可膨胀3次，超过3次则无法在使用膨胀机会。<br>
+                        4.使用范围：仅限参与活动的课程进行使用。<br>
+                        5.膨胀劵不可叠加使用，每个课程只可使用一张膨胀劵。<br>
+                        6.膨胀劵仅限acca小助手用户使用、膨胀劵可与开学季折扣叠加使用。<br>
+                        7.最终解释权归中博教育所有。
+                    </div>
+                </div>
+                <div class="close_btn">
+                    <img :src="base_img_url +'images/btn-dialog-close.png'"  @click="dialogRules = false" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    window.poster_generate = new Vue({
+        el:"#poster_generate",
+        data:{
+            dialogRules:false,
+            base_img_url:"./",  //图片前缀
+        },
+        created: function () {
+
+        },
+        mounted: function () {
+            
+        },
+        methods:{
+            addShare(){//调用分享
+                // 配置分享标题及图片
+				let params = {
+					title:'开学季膨胀活动',
+					imageUrl:'https://www.zbgedu.com/special/acca_helper_notice/img/share-img-coin2.jpg',
+					link:"https://www.zbgedu.com/special/help20201025/#/checkcard/help?phone=" + getCookie('phone'),
+					desc:'开学季活动描述描述描述描述'
+				}
+				let strParam = JSON.stringify(params)
+				if(isAndroid()){
+					window.acca.share(strParam)
+				}else{
+					window.webkit.messageHandlers.share.postMessage(strParam);
+				}
+            }    
+        }
+    })
+</script>
+</html>

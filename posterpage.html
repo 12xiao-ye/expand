@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入外部js -->
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="https://cdn.suoluomei.com/common/js2.0/vue/v2.5.16/vue.js"></script>
+    <script src="./js/rem.js"></script>
+    <!-- 公用样式 -->
+    <link rel="stylesheet" href="./css/common.css">
+    <script src="js/common.js"></script>
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="./css/web.css">   
+
+    
+    <title>我的课程</title>
+</head>
+<!-- 海报页面 -->
+<body>
+    <div id="poster_page" class="poster_page" v-cloak>
+        <div class="activity-rules fr" @click="dialogRules = true">活动规则</div>
+        <img class="img-poster" :src="base_img_url + 'images/img-poster.png'" alt="">
+        <div class="erweima-box" v-if="helpFlag">
+            <div>
+                <img src="" alt="">
+            </div>
+            <p>— 扫描二维码膨胀一下 —</p>
+        </div>  
+        <!-- 膨胀结果弹窗 -->
+        <div class="dialog-bg " v-if="dialogExpand">
+            <div class="expand-result pos_ab_center">
+                    <img v-if="expandSucess" :src="base_img_url + 'images/img-result-y.png'">
+                    <img v-else :src="base_img_url + 'images/img-result-n.png'">
+                    <div class="close-result-box" @click="resultPage">
+                        确定
+                    </div>
+            </div>
+        </div>
+        <!-- 登录弹窗 -->
+        <div class="dialog-bg " v-if="dialogLogin">
+            <div class=" pos_ab_center">
+                <div class="login-box">
+                    <div class="login-title">
+                        <img class="icon-line" :src="base_img_url + 'images/icon-t-line.png'">
+                        <img class="img-login" :src="base_img_url + 'images/img-login.png'">
+                        <img class="icon-line" :src="base_img_url + 'images/icon-t-line.png'">
+                    </div>
+                    <div class="form-box">
+                        <div class="v-phone">
+                            <input type="number" v-model="phoneNum" placeholder="请输入手机号">
+                        </div>
+                        <div class="v-code clearfix">
+                            <input class="fl" type="text" v-model.trim="codeNum" placeholder="输入验证码">
+                            <button class="btn-code fl" :class="{btndisable}" @click="getCode">{{btnHtml}}</button>
+                        </div>
+                        <div class="btn-log" @click="Login">
+                            立即登录
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="close_btn" @click="closeLoginBox">
+                    <img :src="base_img_url +'images/btn-dialog-close.png'" alt="">
+                </div> -->
+            </div>
+        </div>
+        <!-- 规则弹窗 -->
+        <div class="dialog-bg dialog-rules-box" v-show="dialogRules">
+            <div class="rules-content pos_ab_center">
+                <div class="rules-top-txt">
+                    <div class="top-txt">
+                        <p class="t-ch">活动规则</p>
+                        <p class="t-en">ACTIVITY RULES</p>
+                    </div>
+                    <div class="bottom-content">
+                        1.膨胀劵使用时间:2021.09.01-2021.09.30 <br>
+                        2.使用限制：5千元以上课程可使用7倍以内膨胀劵，10000元以上课程可使用10倍以内膨胀劵，20000元以上课程可使用20倍膨胀劵。<br>
+                        3.每日可膨胀3次，超过3次则无法在使用膨胀机会。<br>
+                        4.使用范围：仅限参与活动的课程进行使用。<br>
+                        5.膨胀劵不可叠加使用，每个课程只可使用一张膨胀劵。<br>
+                        6.膨胀劵仅限acca小助手用户使用、膨胀劵可与开学季折扣叠加使用。<br>
+                        7.最终解释权归中博教育所有。
+                    </div>
+                </div>
+                <div class="close_btn">
+                    <img :src="base_img_url +'images/btn-dialog-close.png'"  @click="dialogRules = false" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    window.poster_page = new Vue({
+        el:"#poster_page",
+        data:{
+            dialogRules:false, // 规则弹窗显示
+            base_img_url:"./",  //图片前缀
+            dialogLogin: true, // 登录弹窗显示
+            expandSucess: true, //膨胀结果是否成功
+            dialogExpand: false, // 膨胀结果弹窗
+            btndisable:false,
+            btnHtml:'获取验证码',
+            phoneNum: '', // 电话号码
+            codeNum: '', // 验证码
+            logMsgErr:'' , // 错误信息
+            helpFlag:false
+        },
+        created: function () {
+
+        },
+        mounted: function () {
+            
+        },
+        methods:{
+            closeLoginBox:function(){
+                this.dialogLogin = false
+                this.phoneNum= ''
+                this.codeNum= ''
+                this.logMsgErr = ""
+            },
+            Login:function(){
+                var reg_tel = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
+                if(!reg_tel.test(this.phoneNum)){
+                    tipsBox({type:'fail',message:'请填写正确的手机号'})
+                }else  if(!this.codeNum){
+                    tipsBox({type:'fail',message:'验证码不能为空'})
+                }else{
+                    tipsBox({type:'load',flag:true})
+                    var _this = this
+                    $.ajax({
+                        url:apiUrl.acca + '/api/user/invite.do',
+                        type:'post',
+                        contentType: "application/json;charset=UTF-8",
+                        data:JSON.stringify({
+                            "inviteePhone": '',//被邀请人手机号
+                            "inviterPhone":'',//邀请人手机号
+                            "smsVcode":'',//验证码
+                            "activityId":''//活动id
+                        }),
+                        success:function(res){
+                            tipsBox({type:'load',flag:false})
+                            _this.dialogExpand = true
+                            _this.dialogLogin = false
+                            if(res.respCode==0){
+                                _this.expandSucess = true
+							}else{
+                                _this.expandSucess = false
+							}
+                        },
+                        fail:function(res){
+                            tipsBox({type:'load',flag:false})
+                            tipsBox({type:'fail',message:res.respDesc?res.respDesc:'请求失败了！'})
+                        }
+                        
+                    })
+                }
+
+                
+            },
+            getCode(){
+                var reg_tel = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
+                if(!reg_tel.test(this.phoneNum)){
+                    tipsBox({type:'fail',message:'请填写正确的手机号'})
+                }else{
+                    var _this = this
+                    tipsBox({type:'load',flag:true})
+                    this.btndisable = true;
+                    $.ajax({
+                        url:apiUrl.acca + '/api/user/getSmsVcode.do',
+                        type:'post',
+                        contentType: "application/json;charset=UTF-8",
+                        data:JSON.stringify({
+                            "phone": this.phoneNum
+                        }),
+                        success:function(res){
+                            tipsBox({type:'load',flag:false})
+                            if(res.respCode==0){
+                                _this.cutTime(60)
+                            }else{
+                                this.btndisable = false;
+                                tipsBox({type:'fail',message:'发送失败!'})
+                            }
+                        }
+                    })
+                }
+            },
+            cutTime(time){//验证码倒计时
+				var num = time;
+				let timer_code =''
+				this.btnHtml = num + '秒'
+				timer_code = setInterval(()=>{
+					num--;
+					this.btnHtml = num + '秒'
+					if (num <= 0) {
+						clearInterval(timer_code);   //定时器清除；
+						this.btnHtml = '获取验证码'
+                        this.btndisable = false
+					}
+				}, 1000)
+			},
+            resultPage:function(){
+                window.open('./appdownload.html','_self')
+            }
+                
+        }
+    })
+</script>
+</html>

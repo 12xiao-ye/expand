@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入外部js -->
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="https://cdn.suoluomei.com/common/js2.0/vue/v2.5.16/vue.js"></script>
+    <script src="./js/rem.js"></script>
+    <!-- 公用样式 -->
+    <link rel="stylesheet" href="./css/common.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="./css/web.css">  
+    
+    <title>我的课程</title>
+</head>
+<!-- app下载页面 -->
+<body>
+    <div id="app_download" class="download-page" v-cloak>
+        <div class="activity-rules fr" @click="dialogRules = true">活动规则</div>
+
+        <div class="app-info">
+            <img :src="base_img_url +'images/WechatIMG11.png'" alt="">
+            <p class="app-title">ACCA Helper</p>
+            <p class="app-txt">ACCA 学习随身小助手</p>
+        </div>
+        <div class="bottom-btn-box">
+            <div class="btn-iphone">
+                <img :src="base_img_url +'images/icon-apple.png'" alt="">
+                <!-- <img :src="base_img_url +'images/icon-apple-01.png'" alt=""> -->
+                <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.chinaife.acca">iphone版下载</a>
+            </div>
+            <div class="btn-android">
+                <!-- <img :src="base_img_url +'images/icon-andriod.png'" alt=""> -->
+                <img :src="base_img_url +'images/icon-andriod-01.png'" alt="">
+                <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.chinaife.acca">android版下载</a>
+            </div>  
+        </div>
+
+        <!-- 规则弹窗 -->
+        <div class="dialog-bg dialog-rules-box" v-show="dialogRules">
+            <div class="rules-content pos_ab_center">
+                <div class="rules-top-txt">
+                    <div class="top-txt">
+                        <p class="t-ch">活动规则</p>
+                        <p class="t-en">ACTIVITY RULES</p>
+                    </div>
+                    <div class="bottom-content">
+                        1.膨胀劵使用时间:2021.09.01-2021.09.30 <br>
+                        2.使用限制：5千元以上课程可使用7倍以内膨胀劵，10000元以上课程可使用10倍以内膨胀劵，20000元以上课程可使用20倍膨胀劵。<br>
+                        3.每日可膨胀3次，超过3次则无法在使用膨胀机会。<br>
+                        4.使用范围：仅限参与活动的课程进行使用。<br>
+                        5.膨胀劵不可叠加使用，每个课程只可使用一张膨胀劵。<br>
+                        6.膨胀劵仅限acca小助手用户使用、膨胀劵可与开学季折扣叠加使用。<br>
+                        7.最终解释权归中博教育所有。
+                    </div>
+                </div>
+                <div class="close_btn">
+                    <img :src="base_img_url +'images/btn-dialog-close.png'"  @click="dialogRules = false" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    window.index = new Vue({
+        el:"#app_download",
+        data:{
+            dialogRules:false, // 规则弹窗显示
+            base_img_url:"./",  //图片前缀
+
+        },
+        created: function () {
+
+        },
+        mounted: function () {
+            
+        },
+        methods:{
+                
+        }
+    })
+</script>
+</html>

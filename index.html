@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <!-- 引入外部js -->
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="https://cdn.suoluomei.com/common/js2.0/vue/v2.5.16/vue.js"></script>
+    <script src="./js/rem.js"></script>
+    <script type="text/javascript" src="./js/vconsole.min.js"></script>
+    <script  src="js/common.js"></script>
+    <!-- 公用样式 -->
+    <link rel="stylesheet" href="./css/common.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="./css/web.css">
+
+    <title>我的课程</title>
+</head>
+<!-- 课程列表页面 -->
+<body>
+    <div id="course_list" class="page-courselist" v-cloak>
+        <div class="top-content">
+            <div class="activity-rules fr" @click="dialogRules = true">活动规则</div>
+            <img class="img-course" :src="base_img_url + 'images/img-bg-course.png'" alt="">
+            <!-- 课程列表 -->
+            <div class="content-courselist">   
+                <ul>
+                    <li class="course-item" v-for="(item,ind) in courseList" :key = "ind">
+                        <span v-if="!item.isexpand" class="icon-buy">已购买</span>
+                        <div class="img-box">
+                            <img :src="item.img" alt="">
+                        </div>
+                        <p>{{item.title}}</p>
+                        <div class="btn-expand" @click="toPage(item.isexpand)">
+                            {{item.isexpand? '立即膨胀' : '立即学习'}}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 下方好友 -->
+        <div class="friend-list">
+            <div class="none-list pos_ab_box">
+                <a href="./postergenerate.html">
+                    <img class="pos_ab_center" :src="base_img_url +'images/img-v-friend.png'" alt="">
+                </a>
+            </div>
+        </div>
+        <!-- 规则弹窗 -->
+        <div class="dialog-bg dialog-rules-box" v-show="dialogRules">
+            <div class="rules-content pos_ab_center">
+                <div class="rules-top-txt">
+                    <div class="top-txt">
+                        <p class="t-ch">活动规则</p>
+                        <p class="t-en">ACTIVITY RULES</p>
+                    </div>
+                    <div class="bottom-content">
+                        1.膨胀劵使用时间:2021.09.01-2021.09.30 <br>
+                        2.使用限制：5千元以上课程可使用7倍以内膨胀劵，10000元以上课程可使用10倍以内膨胀劵，20000元以上课程可使用20倍膨胀劵。<br>
+                        3.每日可膨胀3次，超过3次则无法在使用膨胀机会。<br>
+                        4.使用范围：仅限参与活动的课程进行使用。<br>
+                        5.膨胀劵不可叠加使用，每个课程只可使用一张膨胀劵。<br>
+                        6.膨胀劵仅限acca小助手用户使用、膨胀劵可与开学季折扣叠加使用。<br>
+                        7.最终解释权归中博教育所有。
+                    </div>
+                </div>
+                <div class="close_btn">
+                    <img :src="base_img_url +'images/btn-dialog-close.png'"  @click="dialogRules = false" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    new VConsole()
+    // import commonFun from './js/common.js'
+    var _this = window
+    // console.log(_this,'===')
+    // console.log(commonFun.add(1,3))
+    window.course_list = new Vue({
+        el:"#course_list",
+        data:{
+            base_img_url:"./", //图片前缀
+            dialogRules: false , // 规则弹窗
+            courseList:[  //课程列表
+                {
+                        title:"课程名称",
+                        id:'1',
+                        img:"./images/img-cousrse-item.png",
+                        isexpand: true,
+                },
+                {
+                        title:"课程名称",
+                        id:'2',
+                        img:"./images/img-cousrse-item.png",
+                        isexpand: true,
+                },
+                {
+                        title:"课程名称",
+                        id:'3',
+                        img:"./images/img-cousrse-item.png",
+                        isexpand: true,
+                },
+                {
+                        title:"课程名称",
+                        id:'4',
+                        img:"./images/img-cousrse-item.png",
+                        isexpand: true,
+                },
+                {
+                        title:"课程名称",
+                        id:'5',
+                        img:"./images/img-cousrse-item.png",
+                        isexpand: true,
+                },
+                {
+                        title:"课程名称",
+                        id:'6',
+                        img:"./images/img-cousrse-item.png",
+                        isexpand: true,
+                },
+                {
+                        title:"课程名称",
+                        id:'7',
+                        img:"./images/img-cousrse-item.png",
+                        isexpand: true,
+                },
+            ], 
+        },
+        created: function () {
+            
+        },
+        mounted: function () {
+            // 获取url参数
+            if(getQueryName('userAccessToken')){
+                setCookie("accaUserId",getQueryName("accaUserId"),0.5)
+                setCookie("userAccessToken",getQueryName("userAccessToken"),0.5)
+                setCookie("phone",getQueryName("phone"),0.5)
+            }
+            
+        },
+        methods:{
+            
+            toPage:function(isexpand){
+                if(isexpand){
+                    window.open('./activitydetails.html','_self')
+                } else {
+
+                }
+            }
+        }
+    })
+</script>
+</html>
